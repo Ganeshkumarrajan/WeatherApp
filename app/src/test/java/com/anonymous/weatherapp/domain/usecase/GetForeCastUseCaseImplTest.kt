@@ -1,6 +1,9 @@
-package com.anonymous.weatherapp.domain
+package com.anonymous.weatherapp.domain.usecase
 
+import com.anonymous.weatherapp.domain.GetForeCastUseCaseImpl
 import com.anonymous.weatherapp.domain.fake_data.*
+import com.anonymous.weatherapp.domain.repository.ForeCaseRepository
+import com.anonymous.weatherapp.domain.utils.NetworkResult
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runBlockingTest
 import org.junit.Before
@@ -13,7 +16,7 @@ import org.junit.Assert
 @OptIn(ExperimentalCoroutinesApi::class)
 class GetForeCastUseCaseImplTest {
 
-    private var repository: ForeCaseRepository = mockk(relaxed = true)
+    private var repository: ForeCaseRepository = mockk()
     lateinit var useCase: GetForeCastUseCaseImpl
 
     @Before

@@ -1,7 +1,7 @@
 package com.anonymous.weatherapp.domain.fake_data
 
-import com.anonymous.weatherapp.domain.ForecastDomain
-import com.anonymous.weatherapp.domain.NetworkResult
+import com.anonymous.weatherapp.domain.model.ForecastDomain
+import com.anonymous.weatherapp.domain.utils.NetworkResult
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 

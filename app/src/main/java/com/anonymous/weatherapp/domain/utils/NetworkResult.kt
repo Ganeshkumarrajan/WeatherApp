@@ -1,4 +1,4 @@
-package com.anonymous.weatherapp.domain
+package com.anonymous.weatherapp.domain.utils
 
 sealed class NetworkResult<in T> {
     data class Success<T>(val data: T) : NetworkResult<T>()
