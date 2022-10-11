@@ -1,5 +1,8 @@
 package com.anonymous.weatherapp.domain
 
+import com.anonymous.weatherapp.domain.model.ForecastDomain
+import com.anonymous.weatherapp.domain.repository.ForeCaseRepository
+import com.anonymous.weatherapp.domain.utils.NetworkResult
 import kotlinx.coroutines.flow.Flow
 
 interface GetForecastUseCase {
