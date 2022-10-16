@@ -1,22 +1,25 @@
 package com.anonymous.weatherapp.data.mapper
 
-import ForeCastNetwork
+import com.anonymous.weatherapp.data.model.ForeCastNetworkData
 import com.anonymous.weatherapp.data.utils.NetworkException
 import com.anonymous.weatherapp.domain.model.ForecastDomain
 import java.text.SimpleDateFormat
 import java.util.*
 
-class ForeCastNetworkToDomainMapper : Mapper<ForeCastNetwork, List<ForecastDomain>> {
+
+class ForeCastNetworkToDomainMapper :
+    Mapper<ForeCastNetworkData, List<ForecastDomain>> {
     @Throws(Exception::class)
-    override fun mapTo(input: ForeCastNetwork): List<ForecastDomain> {
-        if (input.cod?.isNotEmpty() == true) throw NetworkException(input.cod ?: "")
-        return input.list?.map {
+    override fun mapTo(input: ForeCastNetworkData): List<ForecastDomain> {
+        if (input.cod?.toInt() != 200) throw NetworkException(input.cod ?: "")
+        val result = input.list?.map {
             ForecastDomain(
                 date = convertDay(it.dtTxt?.split(" ")?.get(0) ?: ""),
-                temperatureImagePath = it.weather?.get(0)?.icon ?: "",
+                temperatureImagePath = "https://openweathermap.org/img/wn/${it.weather?.get(0)?.icon ?: ""}@2x.png",
                 temp = (it.main?.temp?.toInt().toString())
             )
-        } ?: emptyList()
+        }?.distinctBy { it.date }
+        return result ?: emptyList()
     }
 
     private fun convertDay(day: String): String {

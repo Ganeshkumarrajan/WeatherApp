@@ -1,6 +1,8 @@
+package com.anonymous.weatherapp.data.model
+
 import com.google.gson.annotations.SerializedName
 
-data class ForeCastNetwork(
+data class ForeCastNetworkData(
     @SerializedName("city")
     var city: City?= null,
     @SerializedName("cnt")
@@ -42,7 +44,7 @@ data class ForeCast(
     @SerializedName("main")
     var main: Main?= null,
     @SerializedName("pop")
-    var pop: Int?= null,
+    var pop: Double?= null,
     @SerializedName("sys")
     var sys: Sys?= null,
     @SerializedName("visibility")

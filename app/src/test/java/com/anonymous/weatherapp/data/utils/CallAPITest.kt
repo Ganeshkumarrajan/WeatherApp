@@ -1,6 +1,6 @@
 package com.anonymous.weatherapp.data.utils
 
-import ForeCastNetwork
+import com.anonymous.weatherapp.data.model.ForeCastNetworkData
 import com.anonymous.weatherapp.data.fake_data.fakeErrorCode_401
 import com.anonymous.weatherapp.data.fake_data.fakeErrorCode_500
 import com.anonymous.weatherapp.data.fake_data.getFakeForeCastNetwork
@@ -24,7 +24,7 @@ class APIParserTest() {
     @Test
     fun testSuccessCase() {
         coEvery {
-            mapper.mapTo(ForeCastNetwork())
+            mapper.mapTo(ForeCastNetworkData())
         } returns listOf(ForecastDomain("", "", ""))
 
         val convertedResult = callAPI(
@@ -41,7 +41,7 @@ class APIParserTest() {
     @Test
     fun testNotFoundExceptionCase() {
         every {
-            mapper.mapTo(ForeCastNetwork(cod = fakeErrorCode_401))
+            mapper.mapTo(ForeCastNetworkData(cod = fakeErrorCode_401))
         } throws NetworkException(fakeErrorCode_401)
 
 
@@ -60,7 +60,7 @@ class APIParserTest() {
     @Test
     fun testInternalErrorExceptionCase() {
         every {
-            mapper.mapTo(ForeCastNetwork(cod = fakeErrorCode_500))
+            mapper.mapTo(ForeCastNetworkData(cod = fakeErrorCode_500))
         } throws NetworkException(fakeErrorCode_500)
 
 
@@ -77,7 +77,7 @@ class APIParserTest() {
     @Test
     fun testNetworkErrorCase() {
         every {
-            mapper.mapTo(ForeCastNetwork(cod = fakeErrorCode_500))
+            mapper.mapTo(ForeCastNetworkData(cod = fakeErrorCode_500))
         } throws NetworkException(fakeErrorCode_500)
 
 

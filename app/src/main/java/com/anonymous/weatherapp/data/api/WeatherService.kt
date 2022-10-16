@@ -1,10 +1,12 @@
 package com.anonymous.weatherapp.data.api
 
-import ForeCastNetwork
+import com.anonymous.weatherapp.data.model.ForeCastNetworkData
+import com.anonymous.weatherapp.BuildConfig
 import com.skydoves.sandwich.ApiResponse
 import retrofit2.http.GET
+import retrofit2.http.Query
 
 interface WeatherService {
-    @GET("")
-    fun getForeCast(): ApiResponse<ForeCastNetwork>
+    @GET("data/2.5/forecast?appid=${BuildConfig.API_KEY}")
+    suspend fun getForeCast(@Query("q") cityName:String): ApiResponse<ForeCastNetworkData>
 }

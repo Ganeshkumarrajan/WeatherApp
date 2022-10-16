@@ -33,7 +33,7 @@ class ForeCastRepositoryImplTest {
     @DisplayName("get forecast data on valid city name")
     @Test
     fun testValidCityName() = runBlockingTest {
-        coEvery { weatherServer.getForeCast() } returns getFakeForeCastList()
+        coEvery { weatherServer.getForeCast(FakeForecast.validCityName) } returns getFakeForeCastList()
 
         val forecastList = repositoryImpl.getForecast(validCityName = FakeForecast.validCityName)
 
@@ -46,7 +46,7 @@ class ForeCastRepositoryImplTest {
     @DisplayName("get error data on invalid city name")
     @Test
     fun testInValidCityName() = runBlockingTest {
-        coEvery { weatherServer.getForeCast() } returns getFakeErrorForeCastList()
+        coEvery { weatherServer.getForeCast(FakeForecast.invalidCityName) } returns getFakeErrorForeCastList()
 
         val forecastList = repositoryImpl.getForecast(validCityName = FakeForecast.invalidCityName)
 

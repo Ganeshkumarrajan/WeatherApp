@@ -1,4 +1,4 @@
-package com.anonymous.weatherapp.ui.theme
+package com.anonymous.weatherapp.presentation.theme
 
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Shapes

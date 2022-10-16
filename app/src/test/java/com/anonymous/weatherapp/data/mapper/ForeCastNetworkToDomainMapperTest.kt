@@ -15,7 +15,6 @@ class ForeCastNetworkToDomainMapperTest {
         val result = ForeCastNetworkToDomainMapper().mapTo(getFakeForeCastNetworkData())
         assertEquals(1, result.size)
         assertEquals("10", result[0].temp)
-        assertEquals("1d", result[0].temperatureImagePath)
         assertEquals("Oct 09", result[0].date)
     }
 
