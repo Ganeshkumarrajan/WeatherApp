@@ -1,6 +1,6 @@
 package com.anonymous.weatherapp.data.repository
 
-import ForeCastNetwork
+import com.anonymous.weatherapp.data.model.ForeCastNetworkData
 import com.anonymous.weatherapp.data.api.WeatherService
 import com.anonymous.weatherapp.data.mapper.Mapper
 import com.anonymous.weatherapp.data.utils.callAPI
@@ -9,14 +9,15 @@ import com.anonymous.weatherapp.domain.model.ForecastDomain
 import com.anonymous.weatherapp.domain.utils.NetworkResult
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
+import javax.inject.Inject
 
-class ForeCastRepositoryImpl(
+class ForeCastRepositoryImpl @Inject constructor(
     private val weatherServer: WeatherService,
-    private val mapper: Mapper<ForeCastNetwork, List<ForecastDomain>>
+    private val mapper: Mapper<ForeCastNetworkData, List<ForecastDomain>>
 ) : ForeCaseRepository {
 
-    override fun getForecast(validCityName: String): Flow<NetworkResult<List<ForecastDomain>>> =
+    override fun getForecast(validCityName: String): Flow<NetworkResult<kotlin.collections.List<ForecastDomain>>> =
         flow {
-            emit(callAPI(weatherServer.getForeCast(), mapper))
+            emit(callAPI(weatherServer.getForeCast(validCityName), mapper))
         }
 }

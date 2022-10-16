@@ -1,6 +1,6 @@
 package com.anonymous.weatherapp.domain.usecase
 
-import com.anonymous.weatherapp.domain.GetForeCastUseCaseImpl
+import com.anonymous.weatherapp.domain.useCase.GetForeCastUseCaseImpl
 import com.anonymous.weatherapp.domain.fake_data.*
 import com.anonymous.weatherapp.domain.repository.ForeCaseRepository
 import com.anonymous.weatherapp.domain.utils.NetworkResult

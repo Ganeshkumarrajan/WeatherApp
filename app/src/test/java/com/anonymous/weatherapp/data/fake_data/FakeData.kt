@@ -1,14 +1,14 @@
 package com.anonymous.weatherapp.data.fake_data
 
-import ForeCast
-import ForeCastNetwork
-import Main
-import Weather
+import com.anonymous.weatherapp.data.model.ForeCast
+import com.anonymous.weatherapp.data.model.ForeCastNetworkData
+import com.anonymous.weatherapp.data.model.Main
+import com.anonymous.weatherapp.data.model.Weather
 import com.skydoves.sandwich.ApiResponse
 import retrofit2.Response
 
-internal fun getFakeForeCastNetworkData(): ForeCastNetwork =
-    ForeCastNetwork(
+internal fun getFakeForeCastNetworkData(): ForeCastNetworkData =
+    ForeCastNetworkData( cod = "200",
         list = listOf(
             ForeCast(
                 dtTxt = "2022-10-09 06:00:00",
@@ -18,27 +18,27 @@ internal fun getFakeForeCastNetworkData(): ForeCastNetwork =
         )
     )
 
-fun getFakeErrorForeCastNetworkData(): ForeCastNetwork = ForeCastNetwork(cod = "401")
+fun getFakeErrorForeCastNetworkData(): ForeCastNetworkData = ForeCastNetworkData(cod = "401")
 
 internal const val fakeErrorCode_401 = "401"
 internal const val fakeErrorCode_500 = "500"
 
-internal fun getFakeForeCastNetwork(): ApiResponse<ForeCastNetwork> {
-    val response = Response.success(ForeCastNetwork())
+internal fun getFakeForeCastNetwork(): ApiResponse<ForeCastNetworkData> {
+    val response = Response.success(ForeCastNetworkData())
     return ApiResponse.Success(response)
 }
 
-internal fun getFakeForeCastNetworkWithException(errorCode: String): ApiResponse<ForeCastNetwork> {
-    val response = Response.success(ForeCastNetwork(cod = errorCode))
+internal fun getFakeForeCastNetworkWithException(errorCode: String): ApiResponse<ForeCastNetworkData> {
+    val response = Response.success(ForeCastNetworkData(cod = errorCode))
     return ApiResponse.Success(response)
 }
 
-internal fun getFakeForeCastList(): ApiResponse<ForeCastNetwork> {
-    val response = Response.success(ForeCastNetwork())
+internal fun getFakeForeCastList(): ApiResponse<ForeCastNetworkData> {
+    val response = Response.success(ForeCastNetworkData(cod = "200"))
     return ApiResponse.Success(response)
 }
 
-internal fun getFakeErrorForeCastList(): ApiResponse<ForeCastNetwork> {
-    val response = Response.success(ForeCastNetwork(cod = fakeErrorCode_401))
+internal fun getFakeErrorForeCastList(): ApiResponse<ForeCastNetworkData> {
+    val response = Response.success(ForeCastNetworkData(cod = fakeErrorCode_401))
     return ApiResponse.Success(response)
 }

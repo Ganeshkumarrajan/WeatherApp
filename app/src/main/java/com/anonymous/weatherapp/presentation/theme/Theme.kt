@@ -1,4 +1,4 @@
-package com.anonymous.weatherapp.ui.theme
+package com.anonymous.weatherapp.presentation.theme
 
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material.MaterialTheme
